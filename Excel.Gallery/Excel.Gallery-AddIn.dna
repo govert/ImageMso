@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DnaLibrary Name="ImageMSO Gallery" RuntimeVersion="v4.0" xmlns="http://schemas.excel-dna.net/addin/2018/05/dnalibrary">
+  <ExternalLibrary Path="ImageMso.Excel.Gallery.dll" Pack="true" />
+  <Reference Path="ImageMso.Excel.dll" Pack="true" />
+  <Reference Path="IconLib.dll" Pack="true" />
+  <CustomUI>
+    <customUI onLoad="OnLoad" xmlns="http://schemas.microsoft.com/office/2009/07/customui">
+      <ribbon>
+        <tabs>
+          <tab idMso="TabInsert">
+            <group id="imageMso" label="Icons">
+              <button id="gallery" label="ImageMSO Gallery" size="large" imageMso="DesignAccentsGallery" onAction="OnAction"
+                      supertip="Browse, extract and save Microsoft Office icons." />
+            </group>
+          </tab>
+        </tabs>
+      </ribbon>
+    </customUI>
+  </CustomUI>
+  <CustomUI>
+    <customUI onLoad="OnLoad" xmlns="http://schemas.microsoft.com/office/2006/01/customui">
+      <ribbon>
+        <tabs>
+          <tab idMso="TabInsert">
+            <group id="imageMso" label="Icons">
+              <button id="gallery" label="ImageMSO Gallery" size="large" imageMso="GroupSmartArtQuickStyles" onAction="OnAction"
+                      supertip="Browse, extract and save Microsoft Office icons." />
+            </group>
+          </tab>
+        </tabs>
+      </ribbon>
+    </customUI>
+  </CustomUI>
+</DnaLibrary>
