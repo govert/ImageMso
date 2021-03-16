@@ -32,6 +32,7 @@ using System.Drawing;
 using System.Drawing.IconLib;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -99,8 +100,10 @@ namespace ImageMso.Excel
             var names = new string[imageMso.Names.Count];
             imageMso.Names.CopyTo(names, 0);
             Icons.BeginUpdate();
-            Icons.SmallImageList.Images.AddRange(Array.ConvertAll(names, name => imageMso[name, 16, 16]));
-            Icons.LargeImageList.Images.AddRange(Array.ConvertAll(names, name => imageMso[name, 32, 32]));
+            var smallImages = Array.ConvertAll(names, name => imageMso[name, 16, 16]).Where(img => img != null).ToArray();
+            var largeImages = Array.ConvertAll(names, name => imageMso[name, 32, 32]).Where(img => img != null).ToArray();
+            Icons.SmallImageList.Images.AddRange(smallImages);
+            Icons.LargeImageList.Images.AddRange(largeImages);
             Icons.Items.AddRange(Array.ConvertAll(names, name => new ListViewItem(name, Array.IndexOf(names, name))));
             Icons.EndUpdate();
 
